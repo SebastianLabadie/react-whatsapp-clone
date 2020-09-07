@@ -1,6 +1,7 @@
 //imports
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require ('cors')
 const Pusher = require('pusher');
 
 
@@ -10,11 +11,7 @@ const port = process.env.PORT || 4000
 
 //middlewares
 app.use(express.json())
-app.use((req,res,next)=>{
-    res.setHeader("Access-Control-Allow-Origin","*")
-    res.setHeader("Access-Control-Allow-Headers","*")
-    next()
-})
+app.use(cors())
 
 //DB config
 const URI='mongodb+srv://sebastian:5Uj1OGs8Ukte6ZqH@cluster0.2mong.mongodb.net/wpp-clone?retryWrites=true&w=majority'
@@ -36,9 +33,11 @@ connection.once('open',() =>{
         console.log('A change ocurred: '+JSON.stringify(change))
         if(change.operationType === 'insert'){
             const messageDetail = change.fullDocument
-            pusher.trigger('message', 'inserted',{
+            pusher.trigger('messages', 'inserted',{
                 name:messageDetail.name,
-                message:messageDetail.message
+                message:messageDetail.message,
+                timestamp:messageDetail.timestamp,
+                received:messageDetail.received,
             })
         }else{
             console.log('error triggering pusher')
@@ -52,7 +51,7 @@ const pusher = new Pusher({
   key: '6d4c6e83bbfb9db71094',
   secret: 'f856722d1dd3db63a6a1',
   cluster: 'us2',
-  encrypted: true
+  useTLS: true
 });
 
 //api routers

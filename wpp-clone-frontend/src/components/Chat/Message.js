@@ -25,12 +25,12 @@ const MessageStyled = styled.div`
     
 `
 
-const Message = ({reciver = false}) => {
+const Message = ({name,message,timestamp,reciver = false}) => {
     return (
         <MessageStyled reciver={reciver}>
             <p className="message">
-                <span className="name">Sonny</span>
-                this is a message
+                <span className="name">{name}</span>
+                {message}
                 <span className="timestamp">{new Date().toUTCString()}</span>
             </p>
         </MessageStyled>
