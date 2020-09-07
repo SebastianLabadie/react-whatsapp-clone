@@ -27,7 +27,7 @@ const SidebarHeader = () => {
   return (
     <SidebarHeaderStyled>
       <div className="container-left">
-          <Avatar src="https://thispersondoesnotexist.com/image" />
+          <Avatar /* src="https://thispersondoesnotexist.com/image" */ />
       </div>
       <div className="container-right">
         <IconButton>
