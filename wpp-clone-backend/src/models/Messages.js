@@ -7,4 +7,4 @@ const messagesSchema=new Schema({
     received:Boolean,
 })
                     
-module.exports= model('Messages',messagesSchema)
+module.exports= model('messages',messagesSchema)

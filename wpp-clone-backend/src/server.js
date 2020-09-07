@@ -7,8 +7,15 @@ const Pusher = require('pusher');
 //settings
 const app = express()   
 const port = process.env.PORT || 4000
+
 //middlewares
 app.use(express.json())
+app.use((req,res,next)=>{
+    res.setHeader("Access-Control-Allow-Origin","*")
+    res.setHeader("Access-Control-Allow-Headers","*")
+    next()
+})
+
 //DB config
 const URI='mongodb+srv://sebastian:5Uj1OGs8Ukte6ZqH@cluster0.2mong.mongodb.net/wpp-clone?retryWrites=true&w=majority'
 mongoose.connect(URI,{
@@ -23,15 +30,23 @@ const connection=mongoose.connection;
 connection.once('open',() =>{
     console.log('DB is connected')
 
-    const msgCollection = connection.collection('Messages')
+    const msgCollection = connection.collection('messages')
     const changeStream= msgCollection.watch()
     changeStream.on('change',(change)=>{
-        console.log(chage)
+        console.log('A change ocurred: '+JSON.stringify(change))
+        if(change.operationType === 'insert'){
+            const messageDetail = change.fullDocument
+            pusher.trigger('message', 'inserted',{
+                name:messageDetail.name,
+                message:messageDetail.message
+            })
+        }else{
+            console.log('error triggering pusher')
+        }
     })
 })
 
 //PUSHER REALTIME API
-
 const pusher = new Pusher({
   appId: '1068612',
   key: '6d4c6e83bbfb9db71094',
@@ -40,13 +55,10 @@ const pusher = new Pusher({
   encrypted: true
 });
 
-pusher.trigger('my-channel', 'my-event', {
-  'message': 'hello world'
-});
-
 //api routers
 const routes=require('./routes/routes')
 app.use('/',routes)
+
 //listen
 async function main() {
     await app.listen(port)
