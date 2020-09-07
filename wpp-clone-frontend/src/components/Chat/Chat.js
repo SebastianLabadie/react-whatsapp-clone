@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import ChatHeader from './ChatHeader'
+import ChatBody from './ChatBody'
 const ChatStyled = styled.div`
-
+display:flex;
+flex-direction:column;
 
 
 `
@@ -10,7 +12,9 @@ const ChatStyled = styled.div`
 const Chat = () => {
     return (
         <ChatStyled>
-            CHAt
+           <ChatHeader />
+           <ChatBody />
+           
         </ChatStyled>
     )
 }

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import SidebarChatIndividual from './SidebarChatIndividual'
 const SidebarChatStyled = styled.div`
    background:#fff;
-   padding:20px;
    flex:1;
    overflow:scroll;
 `

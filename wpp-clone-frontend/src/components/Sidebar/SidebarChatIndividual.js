@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from "styled-components";
-import { Avatar, IconButton } from "@material-ui/core";
+import { Avatar } from "@material-ui/core";
 
 const SidebarChatIndividualStyled = styled.div`
 display:flex;
 cursor:pointer;
 border-bottom:1px solid #f6f6f6;
-margin-top: 20px;
+padding: 20px;
 
 &:hover{
     background:#ebebeb;

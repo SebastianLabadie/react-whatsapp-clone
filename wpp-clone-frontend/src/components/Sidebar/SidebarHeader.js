@@ -3,7 +3,7 @@ import styled from "styled-components";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge";
 import ChatIcon from "@material-ui/icons/Chat";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Avatar } from "@material-ui/core";
+import { Avatar,IconButton } from "@material-ui/core";
 
 const SidebarHeaderStyled = styled.div`
   display: flex;
@@ -18,7 +18,6 @@ const SidebarHeaderStyled = styled.div`
       min-width:10vw;
 
       .MuiSvgIcon-root{
-        margin:0 1vw;
           font-size:24px !important;
       }
   }

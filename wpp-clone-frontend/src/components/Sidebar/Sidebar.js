@@ -4,8 +4,8 @@ import SidebarHeader from './SidebarHeader'
 import SidebarSearch from './SidebarSearch'
 import SidebarChat from './SidebarChat'
 const SidebarStyled = styled.div`
-
-
+display:flex;
+flex-direction:column;
 
 `
 
