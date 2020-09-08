@@ -26,7 +26,7 @@ function App() {
   const [messages,setMessages] = useState([])
   const [name,setName] = useState('')
   const getMessages=async ()=>{
-    const  ENDPOINT= 'http://localhost:4000'
+    const  ENDPOINT= 'https://wpp-clone.herokuapp.com'
     const res = await axios.get(ENDPOINT+'/messages/sync')
     setMessages(res.data)
   }

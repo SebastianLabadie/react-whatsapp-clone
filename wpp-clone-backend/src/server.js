@@ -30,7 +30,6 @@ connection.once('open',() =>{
     const msgCollection = connection.collection('messages')
     const changeStream= msgCollection.watch()
     changeStream.on('change',(change)=>{
-        console.log('A change ocurred: '+JSON.stringify(change))
         if(change.operationType === 'insert'){
             const messageDetail = change.fullDocument
             pusher.trigger('messages', 'inserted',{

@@ -36,7 +36,7 @@ const ChatFooter = ({name}) => {
 
   const handleSumbit =  (e) => {
     e.preventDefault();
-    const ENDPOINT = "http://localhost:4000"
+    const ENDPOINT = "https://wpp-clone.herokuapp.com"
     axios.post(ENDPOINT+'/messages/new',{
         message:message,
         name:name,
