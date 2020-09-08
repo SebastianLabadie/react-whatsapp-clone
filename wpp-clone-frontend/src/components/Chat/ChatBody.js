@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Message from "./Message";
+import ScrollToBottom from 'react-scroll-to-bottom'
+
 
 const ChatBodyStyled = styled.div`
   flex:1;
@@ -10,24 +12,31 @@ const ChatBodyStyled = styled.div`
   overflow: auto;
   padding: 30px;
   max-height:90vh;
+  display:flex;
+  .messages{
+    overflow: auto;
+    flex: auto;
+   }
  
 `;
 
-const ChatBody = ({ messages }) => {
+const ChatBody = ({ messages,name }) => {
   const renderMessages = messages.map((message,i) => {
     return (
       <Message
         name={message.name}
         message={message.message}
         timestamp={message.timestamp}
-        reciver={message.received}
+        reciver={message.name === name ? true : false}
         key={i}
       />
     );
   });
   return <ChatBodyStyled>
+            <ScrollToBottom className="messages">
 
     {renderMessages}
+</ScrollToBottom>
     </ChatBodyStyled>;
 };
 

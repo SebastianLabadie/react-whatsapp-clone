@@ -11,12 +11,12 @@ flex-direction:column;
 
 `
 
-const Chat = ({messages}) => {
+const Chat = ({messages,name}) => {
     return (
         <ChatStyled>
            <ChatHeader />
-           <ChatBody messages={messages}/>
-           <ChatFooter/>
+           <ChatBody messages={messages} name={name}/>
+           <ChatFooter name={name}/>
         </ChatStyled>
     )
 }

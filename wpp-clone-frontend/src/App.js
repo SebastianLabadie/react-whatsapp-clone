@@ -4,6 +4,8 @@ import Chat from './components/Chat/Chat';
 import styled from 'styled-components'
 import Pusher from 'pusher-js'
 import axios from 'axios'
+import Login from './components/Login';
+
 
 const AppStyled = styled.div`
 display:grid;
@@ -22,16 +24,16 @@ background:#dadbd3;
 
 function App() {
   const [messages,setMessages] = useState([])
-
+  const [name,setName] = useState('')
   const getMessages=async ()=>{
     const  ENDPOINT= 'http://localhost:4000'
     const res = await axios.get(ENDPOINT+'/messages/sync')
     setMessages(res.data)
   }
-
   useEffect(()=>{
     getMessages()
   },[])
+ 
 
 
   useEffect(()=>{
@@ -44,7 +46,6 @@ function App() {
     const channel = pusher.subscribe('messages');
 
     channel.bind('inserted', (newMessage) => {
-      alert(JSON.stringify(newMessage));
       setMessages([...messages,newMessage])
     });
 
@@ -59,9 +60,9 @@ function App() {
   return (
     <AppStyled >
       <div className="app-container">
-
+        <Login setName={setName}/>
       <Sidebar />
-      <Chat messages={messages}/>
+      <Chat messages={messages} name={name}/>
       </div>
     </AppStyled>
   );

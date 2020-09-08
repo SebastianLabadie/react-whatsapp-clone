@@ -1,3 +1,5 @@
+import firebase from 'firebase'
+
 const firebaseConfig = {
     apiKey: "AIzaSyAODJ1d5ddSxynDvpfSfkzYndgQnhqsAY8",
     authDomain: "wpp-clone-cfe23.firebaseapp.com",
@@ -8,4 +10,8 @@ const firebaseConfig = {
     appId: "1:311271408411:web:78fd2049c84cb36c9a89be"
   };
 
-  
+  const fb= firebase.initializeApp(firebaseConfig);
+
+  export const auth=firebase.auth()
+
+ 

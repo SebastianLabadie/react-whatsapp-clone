@@ -9,12 +9,12 @@ const MessageStyled = styled.div`
     padding:10px;
     width:fit-content;
     border-radius:10px;
-    margin-bottom: 30px;
+    margin: 20px 0; 
     .name{
         position:absolute;
-        top:-15px;
-        font-weight:800;
-        font-size:xx-small;
+        top:-17px;
+        font-weight:700;
+        font-size:12px;
     }
     .timestamp{
         margin-left:10px;

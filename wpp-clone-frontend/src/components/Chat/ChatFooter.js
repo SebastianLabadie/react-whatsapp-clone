@@ -30,7 +30,7 @@ const ChatFooterStyled = styled.div`
     }
   }
 `;
-const ChatFooter = () => {
+const ChatFooter = ({name}) => {
     const [message,setMessage] = useState('')
 
 
@@ -39,7 +39,7 @@ const ChatFooter = () => {
     const ENDPOINT = "http://localhost:4000"
     axios.post(ENDPOINT+'/messages/new',{
         message:message,
-        name:'SEBA',
+        name:name,
         timestamp:"far far",
         received:true,
     })
