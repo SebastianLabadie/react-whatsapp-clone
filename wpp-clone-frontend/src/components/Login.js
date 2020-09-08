@@ -55,7 +55,8 @@ const Login = ({ setName }) => {
   const [user, setUser] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  
+  
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {

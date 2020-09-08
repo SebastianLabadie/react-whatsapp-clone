@@ -32,7 +32,7 @@ const ChatFooterStyled = styled.div`
 `;
 const ChatFooter = ({name}) => {
     const [message,setMessage] = useState('')
-
+    const today = new Date();
 
   const handleSumbit =  (e) => {
     e.preventDefault();
@@ -40,7 +40,7 @@ const ChatFooter = ({name}) => {
     axios.post(ENDPOINT+'/messages/new',{
         message:message,
         name:name,
-        timestamp:"far far",
+        timestamp:today.getHours()+ ":"+today.getMinutes(),
         received:true,
     })
     setMessage('')

@@ -31,7 +31,7 @@ const Message = ({name,message,timestamp,reciver = false}) => {
             <p className="message">
                 <span className="name">{name}</span>
                 {message}
-                <span className="timestamp">{new Date().toUTCString()}</span>
+                <span className="timestamp">{timestamp}</span>
             </p>
         </MessageStyled>
     )
