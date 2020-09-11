@@ -2,7 +2,7 @@
 Whatsapp web layout and chat in realtime,login with firebase auth and all messages saved in mongodb
 
 # Live Demo
-Visit live demo at <wpp-clone.netlify.app>
+Visit live demo at <https://wpp-clone.netlify.app/>
 
 ![](screenshot.png)
 
